@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package lanche;
+
+message Lanche {
+  int32 id = 1;
+  string nome = 2;
+  float preco = 3;
+}
+
+message UmLanche {
+  Lanche lanche = 1;
+}
+
+message Identification{
+  int32 id = 1;
+}
+
+message Pedido {
+  int32 id = 1;
+  repeated Lanche lanches = 2;
+  string status = 3;
+}
+
+message IdsLanches {
+  repeated int32 ids = 1;
+}
+
+message ListaCardapio {
+  repeated Lanche lanches = 1;
+}
+
+message ListaPedidos {
+  repeated Pedido pedidos = 1;
+}
+
+message Vazia {}
+
+service ServicoLanche {
+  rpc ListarCardapio (Vazia) returns (ListaCardapio);
+  rpc CadastrarLanche (UmLanche) returns (Vazia);
+  rpc ExcluirLanche (Identification) returns (Vazia);
+}
+
+service ServicoPedido {
+  rpc MontarPedido (IdsLanches) returns (Vazia);
+  rpc ConsultarPedido (Vazia) returns (ListaPedidos);
+  rpc SolicitarEntrega (Identification) returns (Vazia);
+}
