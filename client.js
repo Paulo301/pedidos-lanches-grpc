@@ -80,12 +80,12 @@ client2.ConsultarPedidos({}, function(err, response) {
 //   console.log("Pedido cadastrado com sucesso");
 // });
 
-client2.SolicitarEntrega({id: 0}, function(err, response) {
-  if (err != null) {
-    console.log(" >>> Ocorreu um erro na solicitação da entrega!");
-    console.log(err);
-    return;
-  }
+// client2.SolicitarEntrega({id: 0}, function(err, response) {
+//   if (err != null) {
+//     console.log(" >>> Ocorreu um erro na solicitação da entrega!");
+//     console.log(err);
+//     return;
+//   }
 
-  console.log("Entrega solicitada com sucesso");
-});
+//   console.log("Entrega solicitada com sucesso");
+// });
