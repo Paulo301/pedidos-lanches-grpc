@@ -34,7 +34,7 @@ client.ListarCardapio({}, function(err, response) {
   })
 });
 
-// client.CadastrarLanche({lanche: {id: 0, nome: "cachorro-quente", preco: 9.99}}, function(err, response) {
+// client.CadastrarLanche({lanche: {nome: "misto", preco: 9.99}}, function(err, response) {
 //   if (err != null) {
 //     console.log(" >>> Ocorreu um erro no cadastro de lanche!");
 //     console.log(err);
@@ -44,7 +44,7 @@ client.ListarCardapio({}, function(err, response) {
 //   console.log("Cadastrado com sucesso");
 // });
 
-// client.ExcluirLanche({id: 0, nome: "cachorro-quente", preco: 9.99}, function(err, response) {
+// client.ExcluirLanche({id: 0}, function(err, response) {
 //   if (err != null) {
 //     console.log(" >>> Ocorreu um erro na exclusão do lanche!");
 //     console.log(err);
@@ -53,3 +53,39 @@ client.ListarCardapio({}, function(err, response) {
 
 //   console.log("Excluido com sucesso");
 // });
+
+client2.ConsultarPedidos({}, function(err, response) {
+  if (err != null) {
+    console.log(" >>> Ocorreu um erro na consulta dos pedidos!");
+    console.log(err);
+    return;
+  }
+
+  console.log(">>>>>>Pedidos");
+  response.pedidos.map((pedido) =>{
+    console.log("Pedido "+pedido.id);
+    pedido.lanches.map((lanche) => {
+      console.log(">>>"+lanche.nome)
+    })
+  })
+});
+
+// client2.MontarPedido({ids: [0,1]}, function(err, response) {
+//   if (err != null) {
+//     console.log(" >>> Ocorreu um erro no cadastro do pedido!");
+//     console.log(err);
+//     return;
+//   }
+
+//   console.log("Pedido cadastrado com sucesso");
+// });
+
+client2.SolicitarEntrega({id: 0}, function(err, response) {
+  if (err != null) {
+    console.log(" >>> Ocorreu um erro na solicitação da entrega!");
+    console.log(err);
+    return;
+  }
+
+  console.log("Entrega solicitada com sucesso");
+});

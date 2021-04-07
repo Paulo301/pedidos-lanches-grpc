@@ -44,6 +44,6 @@ service ServicoLanche {
 
 service ServicoPedido {
   rpc MontarPedido (IdsLanches) returns (Vazia);
-  rpc ConsultarPedido (Vazia) returns (ListaPedidos);
+  rpc ConsultarPedidos (Vazia) returns (ListaPedidos);
   rpc SolicitarEntrega (Identification) returns (Vazia);
 }
